@@ -1,0 +1,22 @@
+﻿name: 'EaW-Steam-Releaser'
+description: 'A basic Docker-based GitHub Action to release mods for EaW on Steam.'
+author: 'Crni Bombarder'
+
+inputs:
+  message:
+    description: 'A message to display'
+    required: false
+    default: 'Hello from Docker GitHub Action!'
+
+outputs:
+  result:
+    description: 'The result of the action'
+    value: ${{ steps.action.outputs.result }}
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'box'
+  color: 'blue'

@@ -1,0 +1,16 @@
+﻿name: Test Docker Action
+
+on:
+  release:
+    types: [ created ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Run Docker Action
+        uses: ./
+        with:
+          message: 'Custom message from workflow'
