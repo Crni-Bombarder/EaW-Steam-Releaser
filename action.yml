@@ -1,16 +1,38 @@
 ﻿name: 'EaW-Steam-Releaser'
-description: 'A basic Docker-based GitHub Action to release mods for EaW on Steam.'
+description: 'A Docker-based GitHub Action to release Empire at War mods on Steam'
 author: 'Crni Bombarder'
 
 inputs:
-  message:
-    description: 'A message to display'
+  steam_username:
+    description: 'Steam username for authentication'
     required: false
-    default: 'Hello from Docker GitHub Action!'
+  steam_password:
+    description: 'Steam password for authentication'
+    required: false
+  app_id:
+    description: 'Steam App ID for the game/mod'
+    required: false
+    default: '32470'  # Empire at War base game ID
+  workshop_item_id:
+    description: 'Workshop item ID for updates (leave empty for new items)'
+    required: false
+  content_path:
+    description: 'Path to the mod content directory'
+    required: false
+    default: './mod_content'
+  title:
+    description: 'Workshop item title'
+    required: false
+  description:
+    description: 'Workshop item description'
+    required: false
+  changelog:
+    description: 'Changelog for this release'
+    required: false
 
 outputs:
   result:
-    description: 'The result of the action'
+    description: 'The result of the Steam operation'
     value: ${{ steps.action.outputs.result }}
 
 runs:
@@ -18,5 +40,7 @@ runs:
   image: 'Dockerfile'
 
 branding:
+  icon: 'upload-cloud'
+  color: 'blue'
   icon: 'box'
   color: 'blue'
